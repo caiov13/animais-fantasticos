@@ -1,19 +1,20 @@
-const paragrafos = document.querySelectorAll("p");
-console.log(paragrafos);
+const menu = document.querySelectorAll(".menu a");
 
-paragrafos.forEach((item) => {
-  console.log(item.innerText);
+menu.forEach((texto) => {
+  texto.classList.add("ativo");
 });
+
+menu.forEach((texto) => {
+  texto.classList.remove("ativo");
+});
+
+menu[0].classList.add("ativo");
 
 const imgs = document.querySelectorAll("img");
 
-imgs.forEach((item, index) => {
-  console.log(item, index);
+imgs.forEach((item) => {
+  console.log(item.hasAttribute("alt"));
 });
 
-let i = 0;
-imgs.forEach(() => {
-  console.log(i++);
-});
-
-imgs.forEach(() => i++);
+const link = document.querySelector("a[href^='http']");
+link.setAttribute("href", "https://www.youtube.com");
