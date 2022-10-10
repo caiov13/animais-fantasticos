@@ -1,15 +1,19 @@
-const todasImagens = document.getElementsByTagName("img");
-console.log(todasImagens);
+const paragrafos = document.querySelectorAll("p");
+console.log(paragrafos);
 
-const linksInternos = document.querySelectorAll("[href^='#']");
-console.log(linksInternos);
+paragrafos.forEach((item) => {
+  console.log(item.innerText);
+});
 
-const imagens = document.querySelectorAll("[src^='./img/imagem']");
-console.log(imagens);
+const imgs = document.querySelectorAll("img");
 
-const primeiroH2 = document.querySelector(".animals-description h2");
-console.log(primeiroH2);
+imgs.forEach((item, index) => {
+  console.log(item, index);
+});
 
-const ultimoP = document.querySelectorAll("p");
+let i = 0;
+imgs.forEach(() => {
+  console.log(i++);
+});
 
-console.log(ultimoP[--ultimoP.length]);
+imgs.forEach(() => i++);
