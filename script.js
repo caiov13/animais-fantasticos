@@ -1,20 +1,38 @@
-const menu = document.querySelectorAll(".menu a");
+const primeiraImagem = document.querySelector("img");
 
-menu.forEach((texto) => {
-  texto.classList.add("ativo");
+console.log(primeiraImagem.offsetTop);
+
+function somaImagens() {
+  const todasImagens = document.querySelectorAll("img");
+  let soma = 0;
+  todasImagens.forEach((imagem) => {
+    soma += imagem.offsetWidth;
+  });
+  console.log(soma);
+}
+
+window.onload = function () {
+  somaImagens();
+};
+
+const links = document.querySelectorAll("a");
+
+links.forEach((link) => {
+  const linkWidth = link.offsetWidth;
+  const linkHeight = link.offsetHeight;
+  if (linkWidth >= 48 && linkHeight >= 48) {
+    console.log(link, "Possui boa acessibilidade");
+  } else {
+    console.log(link, "Não possui boa acessibilidade");
+  }
 });
 
-menu.forEach((texto) => {
-  texto.classList.remove("ativo");
-});
+const menu = document.querySelector(".menu");
 
-menu[0].classList.add("ativo");
+const menuMobile = window.matchMedia("(max-width: 720px)");
 
-const imgs = document.querySelectorAll("img");
-
-imgs.forEach((item) => {
-  console.log(item.hasAttribute("alt"));
-});
-
-const link = document.querySelector("a[href^='http']");
-link.setAttribute("href", "https://www.youtube.com");
+if (menuMobile.matches) {
+  menu.classList.add("menu-mobile");
+} else {
+  console.log("Usuário de desktop");
+}
