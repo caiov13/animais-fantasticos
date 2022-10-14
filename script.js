@@ -1,38 +1,35 @@
-const primeiraImagem = document.querySelector("img");
+const links = document.querySelectorAll("a[href^='#']");
 
-console.log(primeiraImagem.offsetTop);
-
-function somaImagens() {
-  const todasImagens = document.querySelectorAll("img");
-  let soma = 0;
-  todasImagens.forEach((imagem) => {
-    soma += imagem.offsetWidth;
+function handleLink(event) {
+  event.preventDefault();
+  links.forEach((link) => {
+    link.classList.remove("ativo");
   });
-  console.log(soma);
+  event.currentTarget.classList.add("ativo");
 }
-
-window.onload = function () {
-  somaImagens();
-};
-
-const links = document.querySelectorAll("a");
 
 links.forEach((link) => {
-  const linkWidth = link.offsetWidth;
-  const linkHeight = link.offsetHeight;
-  if (linkWidth >= 48 && linkHeight >= 48) {
-    console.log(link, "Possui boa acessibilidade");
-  } else {
-    console.log(link, "Não possui boa acessibilidade");
-  }
+  link.addEventListener("click", handleLink);
 });
 
-const menu = document.querySelector(".menu");
+const corpo = document.querySelectorAll("body *");
 
-const menuMobile = window.matchMedia("(max-width: 720px)");
-
-if (menuMobile.matches) {
-  menu.classList.add("menu-mobile");
-} else {
-  console.log("Usuário de desktop");
+function handleElement(event) {
+  console.log(event.currentTarget);
 }
+
+function handleBody(event) {
+  event.currentTarget.remove();
+}
+
+function handleKeyBoard(event) {
+  if (event.key === "t") {
+    document.body.style.fontSize = "32px";
+  }
+}
+
+corpo.forEach((elemento) => {
+  elemento.addEventListener("click", handleBody);
+});
+
+window.addEventListener("keydown", handleKeyBoard);
