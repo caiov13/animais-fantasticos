@@ -1,35 +1,16 @@
-const links = document.querySelectorAll("a[href^='#']");
+const menu = document.querySelector(".menu");
 
-function handleLink(event) {
-  event.preventDefault();
-  links.forEach((link) => {
-    link.classList.remove("ativo");
-  });
-  event.currentTarget.classList.add("ativo");
-}
+const copy = document.querySelector(".copy");
 
-links.forEach((link) => {
-  link.addEventListener("click", handleLink);
-});
+const cloneMenu = menu.cloneNode(true);
 
-const corpo = document.querySelectorAll("body *");
+copy.appendChild(cloneMenu);
 
-function handleElement(event) {
-  console.log(event.currentTarget);
-}
+const faq = document.querySelector(".faq");
+const dt = faq.querySelector("dt");
 
-function handleBody(event) {
-  event.currentTarget.remove();
-}
+const dd = dt.nextElementSibling;
 
-function handleKeyBoard(event) {
-  if (event.key === "t") {
-    document.body.style.fontSize = "32px";
-  }
-}
+const animais = document.querySelector(".animais");
 
-corpo.forEach((elemento) => {
-  elemento.addEventListener("click", handleBody);
-});
-
-window.addEventListener("keydown", handleKeyBoard);
+faq.innerHTML = "";
