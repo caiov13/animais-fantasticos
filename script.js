@@ -1,16 +1,19 @@
-const menu = document.querySelector(".menu");
+const animalsImage = document.querySelectorAll(".js-tabmenu li");
+const animalsDescription = document.querySelectorAll(".js-tabcontent section");
 
-const copy = document.querySelector(".copy");
+if (animalsImage.length && animalsDescription.length) {
+  animalsDescription[0].classList.add("ativo");
 
-const cloneMenu = menu.cloneNode(true);
+  function activeTab(index) {
+    animalsDescription.forEach((section) => {
+      section.classList.remove("ativo");
+    });
+    animalsDescription[index].classList.add("ativo");
+  }
 
-copy.appendChild(cloneMenu);
-
-const faq = document.querySelector(".faq");
-const dt = faq.querySelector("dt");
-
-const dd = dt.nextElementSibling;
-
-const animais = document.querySelector(".animais");
-
-faq.innerHTML = "";
+  animalsImage.forEach((image, index) => {
+    image.addEventListener("click", () => {
+      activeTab(index);
+    });
+  });
+}
